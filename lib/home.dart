@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:s2_calculator/beginner.dart';
 
 
 class Home extends StatefulWidget {
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _HomeState createState() => _HomeState();
 }
 
-class _SplashScreenState extends State<Home> {
+class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
@@ -68,7 +69,10 @@ class _SplashScreenState extends State<Home> {
             children: [
               InkWell(
                 onTap: (){
-
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Beginner()),
+                  );
                 },
                 child: Container(
                     margin: EdgeInsets.only(left: 20.0, right: 20.0,top: 5,bottom: 5),
