@@ -18,6 +18,50 @@ class _SplashScreenState extends State<Home> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          title: Text("Calculator"),
+        ),
+        drawer: Container(
+          width: MediaQuery.of(context).size.width * 0.6,
+          child: Drawer(
+            child: Column(
+              children: [
+                UserAccountsDrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                  ),
+                  accountName: Text(
+                    "Calculator",
+                    style:
+                    TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                  ),
+                  currentAccountPicture: CircleAvatar(
+                      radius: 50.0,
+                      backgroundImage: AssetImage("assets/logo.png"),
+                      backgroundColor: Colors.blue),
+                ),
+                _createDrawerItem(
+                    icon: Icons.person,
+                    text: 'Contact Us',
+                    c: Colors.amber,
+                    onTap: () {
+                      // Navigator.pushReplacement(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => AccountScreen()));
+                    }),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  child: Divider(
+                    color: Colors.blue,
+                    thickness: 1.0,
+                    indent: 1.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
         body: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -73,6 +117,25 @@ class _SplashScreenState extends State<Home> {
           )
         ), //<- place where the image appears
       ),
+    );
+  }
+
+  Widget _createDrawerItem(
+      {IconData icon, String text, GestureTapCallback onTap, Color c}) {
+    return ListTile(
+      title: Row(
+        children: <Widget>[
+          Icon(
+            icon,
+            color: c,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 8.0),
+            child: Text(text),
+          )
+        ],
+      ),
+      onTap: onTap,
     );
   }
 }

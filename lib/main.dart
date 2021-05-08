@@ -64,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen>
                     "Ahad Shamim\nSP17-BCS-030",
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 145,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold),
                     softWrap: true,
                   ),
