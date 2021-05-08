@@ -1,26 +1,79 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-void main() {
-  runApp(MyApp());
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:s2_calculator/home.dart';
+
+void main() =>
+    runApp(
+      MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: SplashScreen()
+      ), // Wrap your app
+      // ),
+
+    );
+
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class MyApp extends StatelessWidget {
+class _SplashScreenState extends State<SplashScreen>
+    with TickerProviderStateMixin {
+  @override
+  void initState() {
+    super.initState();
+    checktimer();
+  }
+
+  checktimer() async {
+        new Future.delayed(
+            const Duration(seconds: 5),
+                () =>
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => Home()),
+                )
+        );
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 's2_calculator',
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text("Mycalculator"),
-          ),
-          body: Center(
-            child: Container(
-              child: Text("home page"),
-            ),
-          )
-      ),
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AnimatedSize(
+                vsync: this,
+                duration: Duration(milliseconds: 2000),
+                curve: Curves.bounceInOut,
+                child: Image(
+                    image: AssetImage("assets/logo.png"), height: 250)),
+            AnimatedSize(
+              vsync: this,
+              duration: Duration(milliseconds: 2000),
+              curve: Curves.elasticOut,
+              child: Container(
+                height: 40,
+                child: Center(
+                  child: Text(
+                    "Ahad Shamim\nSP17-BCS-030",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 145,
+                        fontWeight: FontWeight.bold),
+                    softWrap: true,
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ), //<- place where the image appears
     );
   }
 }
