@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:s2_calculator/beginner.dart';
+import 'package:s2_calculator/contactus.dart';
 
 
 class Home extends StatefulWidget {
@@ -46,10 +47,10 @@ class _HomeState extends State<Home> {
                     text: 'Contact Us',
                     c: Colors.amber,
                     onTap: () {
-                      // Navigator.pushReplacement(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => AccountScreen()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Contactus()),
+                      );
                     }),
                 Padding(
                   padding: const EdgeInsets.only(left: 10, right: 10),
