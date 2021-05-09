@@ -20,25 +20,26 @@ class _BeginnerState extends State<Beginner> {
   List<String> history = [];
   bool isloading = true;
 
+
   @override
   void initState() {
     super.initState();
-    gethistroy();
     SystemChannels.textInput.invokeMethod('TextInput.hide');
+    gethistroy();
   }
   gethistroy()async{
     setState(() {
       isloading= true;
     });
     try{
-      history = await sharedPref.read("history")??[];
+      history = await sharedPref.readlist("history");
       setState(() {
         isloading= false;
       });
     }catch(e){
-    setState(() {
-    isloading= false;
-    });
+      setState(() {
+        isloading= false;
+      });
     }
 
   }
@@ -68,7 +69,7 @@ class _BeginnerState extends State<Beginner> {
             Container(
               margin: EdgeInsets.only(left: 20.0, right: 20.0,top: 5,bottom: 5),
               child: TextField(
-                style: TextStyle(fontSize: 23),
+                style: TextStyle(fontSize: 25),
                 onChanged: (value) {},
                 cursorColor: Colors.blue,
                 controller: TextController,
@@ -82,7 +83,7 @@ class _BeginnerState extends State<Beginner> {
                   child: InkWell(
                     onTap: (){
                       setState(() {
-                          TextController.text +="6";
+                        TextController.text +="6";
                       });
 
                     },
@@ -354,7 +355,6 @@ class _BeginnerState extends State<Beginner> {
                   flex:1,
                   child: InkWell(
                     onTap: (){
-
                       setState(() {
                         TextController.text +="1";
                       });
@@ -391,6 +391,7 @@ class _BeginnerState extends State<Beginner> {
                         // setState(() {
                         //   TextController.text= result.value.toString();
                         // });
+                        print(await sharedPref.read("history"));
                         showDialog(
                           context: context,
                           builder: (context) => new AlertDialog(
@@ -451,9 +452,8 @@ class _BeginnerState extends State<Beginner> {
                 ),
               ],
             ),
-
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
                   child: InkWell(
@@ -464,7 +464,7 @@ class _BeginnerState extends State<Beginner> {
                       });
                     },
                     child: Container(
-                        margin: EdgeInsets.only(left: 20.0, right: 20.0,top: 5,bottom: 5),
+                        margin: EdgeInsets.only(left: 20.0, right: 10.0,top: 5,bottom: 5),
                         height: 40.0,
                         width: 40.0,
                         decoration: BoxDecoration(
@@ -493,7 +493,7 @@ class _BeginnerState extends State<Beginner> {
                       });
                     },
                     child: Container(
-                        margin: EdgeInsets.only(left: 20.0, right: 20.0,top: 5,bottom: 5),
+                        margin: EdgeInsets.only(left: 10.0, right: 10.0,top: 5,bottom: 5),
                         height: 40.0,
                         width: 40.0,
                         decoration: BoxDecoration(
@@ -522,7 +522,7 @@ class _BeginnerState extends State<Beginner> {
                       });
                     },
                     child: Container(
-                        margin: EdgeInsets.only(left: 20.0, right: 20.0,top: 5,bottom: 5),
+                        margin: EdgeInsets.only(left: 10.0, right: 10.0,top: 5,bottom: 5),
                         height: 40.0,
                         width: 40.0,
                         decoration: BoxDecoration(
@@ -551,7 +551,7 @@ class _BeginnerState extends State<Beginner> {
                       });
                     },
                     child: Container(
-                        margin: EdgeInsets.only(left: 20.0, right: 20.0,top: 5,bottom: 5),
+                        margin: EdgeInsets.only(left: 10.0, right: 10.0,top: 5,bottom: 5),
                         height: 40.0,
                         width: 40.0,
                         decoration: BoxDecoration(
@@ -572,6 +572,7 @@ class _BeginnerState extends State<Beginner> {
                   ),
                 ),
                 Expanded(
+                  flex: 2,
                   child: InkWell(
                     onTap: (){
                       setState(() {
@@ -579,7 +580,7 @@ class _BeginnerState extends State<Beginner> {
                       });
                     },
                     child: Container(
-                        margin: EdgeInsets.only(left: 20.0, right: 20.0,top: 5,bottom: 5),
+                        margin: EdgeInsets.only(left: 10.0, right: 20.0,top: 5,bottom: 5),
                         height: 40.0,
                         width: 40.0,
                         decoration: BoxDecoration(
