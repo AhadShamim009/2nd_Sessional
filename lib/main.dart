@@ -11,7 +11,6 @@ void main() =>
           home: SplashScreen()
       ), // Wrap your app
       // ),
-
     );
 
 class SplashScreen extends StatefulWidget {
