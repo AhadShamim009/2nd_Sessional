@@ -76,6 +76,15 @@ class _ExpertState extends State<Expert> {
             SizedBox(
               width: 10,
             ),
+            InkWell(
+                onTap: () {
+                  SystemChannels.platform
+                      .invokeMethod('SystemNavigator.pop');
+                },
+                child: Icon(Icons.cancel_outlined)),
+            SizedBox(
+              width: 15,
+            ),
           ],
         ),
         body: (!isloading)

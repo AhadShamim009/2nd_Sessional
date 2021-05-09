@@ -59,6 +59,15 @@ class _BeginnerState extends State<Beginner> {
                 },
                 child: Icon(Icons.access_time_rounded)):SizedBox(),
             SizedBox(width: 10,),
+            InkWell(
+                onTap: () {
+                  SystemChannels.platform
+                      .invokeMethod('SystemNavigator.pop');
+                },
+                child: Icon(Icons.cancel_outlined)),
+            SizedBox(
+              width: 15,
+            ),
           ],
         ),
         body:

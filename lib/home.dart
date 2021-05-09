@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:s2_calculator/beginner.dart';
 import 'package:s2_calculator/contactus.dart';
 
@@ -19,9 +20,21 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text("Calculator"),
+          actions: [
+            InkWell(
+                onTap: () {
+                  SystemChannels.platform
+                      .invokeMethod('SystemNavigator.pop');
+                },
+                child: Icon(Icons.cancel_outlined)),
+            SizedBox(
+              width: 15,
+            ),
+          ],
         ),
         drawer: Container(
           width: MediaQuery.of(context).size.width * 0.6,
