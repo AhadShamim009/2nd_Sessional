@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:s2_calculator/beginner.dart';
 import 'package:s2_calculator/contactus.dart';
+import 'package:s2_calculator/expert.dart';
 
 
 class Home extends StatefulWidget {
@@ -111,7 +112,10 @@ class _HomeState extends State<Home> {
 
               InkWell(
                 onTap: (){
-
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Expert()),
+                  );
                 },
                 child: Container(
                     margin: EdgeInsets.only(left: 20.0, right: 20.0,top: 5,bottom: 5),
